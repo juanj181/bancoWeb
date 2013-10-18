@@ -20,10 +20,9 @@
 </head>
 <body>
 
-<form id="frm1" action="index.jsp">
-Introduce una entidad bancaria: <input type="text" name="nobmre"><br>
+<form METHOD="Get" ACTION="http://localhost:8084/bancoWeb/index.jsp">
+Introduce una entidad bancaria: <input type="text" name="nombre"><br>
 
-<input type="submit" value="Submit form">
 </form>
     </body>
 </html>

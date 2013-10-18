@@ -10,11 +10,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     EntidadBancariaDAO entidadBancariaDAO = new EntidadBancariaDAO();
-    
-List<EntidadBancaria> entidadesBancarias = entidadBancariaDAO.findAll();
+    String nombre=request.getParameter("nombre");
+
+    String mSQL="select * from EntidadBancaria where IdEntidadBancaria='" + nombre +"';" ;
+    List<EntidadBancaria> entidadesBancarias = EntidadBancariaDAO.findAll(mSQL);
 
 
-    %>
+
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,15 +25,16 @@ List<EntidadBancaria> entidadesBancarias = entidadBancariaDAO.findAll();
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1><a href="localhost:8084/bancoWeb/formJsp.jsp">Buscar por nombre</a></h1>
         
-        
-           <% for(EntidadBancaria entidadBancaria:entidadesBancarias){
-                %><tr><td><% out.print(entidadBancaria.getCodigoEntidad());%></td>
-                <td><% out.print(entidadBancaria.getCodigoEntidad());%></td>
-                <td><% out.print(entidadBancaria.getNombre()); %></td>
-                <td><% out.print(entidadBancaria.getCif()); %></td>
+        <table border="solid">
+            <% for (EntidadBancaria entidadBancaria : entidadesBancarias) {%>
+            <tr><td><% out.print(entidadBancaria.getCodigoEntidad());%></td>
+                 <td><% out.print(entidadBancaria.getIdEntidadBancaria());%></td>
+                <td><% out.print(entidadBancaria.getNombre());%></td>
+                <td><% out.print(entidadBancaria.getCif());%></td>
                 <td><% out.print(entidadBancaria.getTipoEntidadBancaria());%></td></tr>
-   <% } %>
+                <% }%>
+        </table>
     </body>
 </html>

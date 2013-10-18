@@ -94,14 +94,14 @@ public class EntidadBancariaDAO {
         conn.close();
     }
 
-public List<EntidadBancaria> findAll() throws ClassNotFoundException, SQLException {
+public static List<EntidadBancaria> findAll(String mSQL) throws ClassNotFoundException, SQLException {
             List<EntidadBancaria> listaEntidades = new ArrayList();
             EntidadBancaria entidadBancaria;
   
            Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/banco", "banco", "banco");
         
-            String selectSQL = "SELECT * from entidadbancaria;";
+            String selectSQL = mSQL;
         PreparedStatement preparedStatement = conn.prepareStatement(selectSQL);
         
         ResultSet rs = preparedStatement.executeQuery();
