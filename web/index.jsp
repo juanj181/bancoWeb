@@ -4,16 +4,17 @@
     Author     : Juanjo
 --%>
 
+<%@page import="fpmislata.com.bancoWeb.datos.EntidadBancariaDAOImplJDBC"%>
 <%@page import="java.util.List"%>
-<%@page import="fpmislata.com.bancoWeb.EntidadBancaria"%>
-<%@page import="fpmislata.com.bancoWeb.EntidadBancariaDAO"%>
+<%@page import="fpmislata.com.bancoWeb.negocio.EntidadBancaria"%>
+<%@page import="fpmislata.com.bancoWeb.datos.EntidadBancariaDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    EntidadBancariaDAO entidadBancariaDAO = new EntidadBancariaDAO();
-    String nombre=request.getParameter("nombre");
+    EntidadBancariaDAO entidadBancariaDAO = new EntidadBancariaDAOImplJDBC();
+    
 
-    String mSQL="select * from EntidadBancaria where IdEntidadBancaria='" + nombre +"';" ;
-    List<EntidadBancaria> entidadesBancarias = EntidadBancariaDAO.findAll(mSQL);
+    
+    List<EntidadBancaria> entidadesBancarias = EntidadBancariaDAOImplJDBC.findAll();
 
 
 
